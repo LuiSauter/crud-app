@@ -8,15 +8,17 @@ const UserSchema = new Schema({
   },
   email: {
     type: String,
-    require: true
+    require: true,
+    unique: true
   },
   password: {
     type: String,
     require: true
   }
 }, { timestamp: true })
+
 // bcrypt || Encryption
-UserSchema.methods.encrypPassword = async password => {
+UserSchema.methods.encryptPassword = async password => {
   const salt = await bcrypt.genSalt(10)
   return await bcrypt.hash(password, salt)
 }

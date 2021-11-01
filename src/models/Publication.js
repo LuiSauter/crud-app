@@ -1,13 +1,18 @@
 const { Schema, model } = require('mongoose')
 
 const PublicationSchema = new Schema({
-  image: {
+  title: {
     type: String,
     required: true
   },
-  comment: {
-    type: String
+  description: {
+    type: String,
+    required: true
+  },
+  user: {
+    type: String,
+    required: true
   }
-}, { timestamp: true })
+}, { timestamps: true})
 
 module.exports = model('Publication', PublicationSchema)
